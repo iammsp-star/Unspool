@@ -1,4 +1,4 @@
-# Unspool 🧵
+# Unspool 🔒
 
 Unspool is an open-source, cross-platform digital wellbeing application designed to help you break free from short-form video addiction. Track your daily scroll counts, battle friends to stay accountable, and hard-lock your feeds when you hit your limit.
 
