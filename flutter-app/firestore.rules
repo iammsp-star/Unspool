@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Check if the user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Users Collection
+    match /users/{userId} {
+      // Users can only read and write their own documents
+      allow read: if isAuthenticated() && request.auth.uid == userId;
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      
+      // Anti-Cheat: Users cannot arbitrarily edit their historic scores or tier level
+      allow update: if isAuthenticated() && request.auth.uid == userId
+                    && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['accountTier', 'historicalScores']);
+    }
+
+    // Battle Rooms Collection
+    match /battles/{battleId} {
+      // Anyone authenticated can read active battle rooms to join them
+      allow read: if isAuthenticated();
+      
+      // Only authenticated users can create new battle rooms
+      allow create: if isAuthenticated();
+      
+      // Users can only update a battle room if they are joining it
+      // or modifying its state (requires server-side validation in a real app)
+      allow update: if isAuthenticated();
+      
+      // Sub-collection for participants in a battle
+      match /participants/{participantId} {
+        // Anyone in the battle can read the scores
+        allow read: if isAuthenticated();
+        
+        // Anti-Cheat: Participants can only update their own scores.
+        // Critical: A user can only INCREMENT their scroll count, never decrement it.
+        allow update: if isAuthenticated() 
+                      && request.auth.uid == participantId
+                      && request.resource.data.scrollCount >= resource.data.scrollCount;
+                      
+        allow create: if isAuthenticated() && request.auth.uid == participantId;
+      }
+    }
+  }
+}
