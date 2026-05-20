@@ -14,11 +14,11 @@ class LoginView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const Icon(
-                Icons.spa_rounded,
+                Icons.lock_outline_rounded,
                 size: 80,
                 color: Colors.deepPurpleAccent,
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 32),
               Text(
                 'Unspool',
                 textAlign: TextAlign.center,
@@ -26,9 +26,9 @@ class LoginView extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 16),
               Text(
-                'Curb your short-form video addiction.\nTake back your time.',
+                'Sign in to sync your digital wellbeing limits across mobile and desktop.',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Colors.white70,
@@ -37,15 +37,15 @@ class LoginView extends StatelessWidget {
               const SizedBox(height: 48),
               FilledButton.icon(
                 onPressed: () {
-                  // TODO: Implement Google Sign In via firebase_auth
+                  // TODO: Implement Google Sign-In with google_sign_in package
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Google Sign-In Triggered')),
                   );
                 },
                 icon: const Icon(Icons.login),
-                label: const Text('Continue with Google'),
+                label: const Text('Sign in with Google'),
                 style: FilledButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 18),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),

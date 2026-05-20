@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:provider/provider.dart';
 
-import 'views/login_view.dart';
-import 'views/dashboard_view.dart';
+import 'core/themes.dart';
+import 'features/auth/auth_gate.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
-  // Note: Firebase configuration requires running `flutterfire configure`.
-  // We initialize gracefully here to avoid hard crashes in boilerplate phase.
+  // Platform-agnostic Firebase initialization
   try {
     await Firebase.initializeApp();
   } catch (e) {
@@ -18,8 +16,12 @@ void main() async {
   }
   
   runApp(
-    const ProviderScope(
-      child: UnspoolApp(),
+    MultiProvider(
+      providers: [
+        // Setup global providers here
+        Provider<String>(create: (_) => 'Example Provider State'),
+      ],
+      child: const UnspoolApp(),
     ),
   );
 }
@@ -31,45 +33,9 @@ class UnspoolApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Unspool',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurple,
-          brightness: Brightness.dark,
-        ),
-        useMaterial3: true,
-        fontFamily: 'Inter',
-      ),
+      theme: AppThemes.darkTheme,
       home: const AuthGate(),
       debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class AuthGate extends StatelessWidget {
-  const AuthGate({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // AuthGate listens to Firebase Auth state changes to decide routing.
-    return StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
-
-        // If the snapshot has user data, route them to the dashboard.
-        if (snapshot.hasData) {
-          return const DashboardView();
-        }
-
-        // Otherwise, they need to log in.
-        return const LoginView();
-      },
     );
   }
 }
