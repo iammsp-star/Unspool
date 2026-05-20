@@ -7,6 +7,16 @@ Unspool is an open-source, cross-platform digital wellbeing application designed
 
 ---
 
+## 📥 Download Unspool
+
+*(Note: Official binaries will be available here soon via GitHub Releases.)*
+
+- 📱 **[Download for Android (.apk)](https://github.com/iammsp-star/Unspool/releases)** *(Coming Soon)*
+- 💻 **[Download for Windows (.exe)](https://github.com/iammsp-star/Unspool/releases)** *(Coming Soon)*
+- 🍏 **[Download for macOS (.dmg)](https://github.com/iammsp-star/Unspool/releases)** *(Coming Soon)*
+
+---
+
 ## 🚀 Features
 
 - **Multi-Platform Sync:** Access your stats and manage your limits seamlessly across your Android device and laptop.
