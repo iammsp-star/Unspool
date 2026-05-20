@@ -1,4 +1,4 @@
-﻿# Unspool ðŸ”’
+# Unspool 🔒
 
 Unspool is an open-source, cross-platform digital wellbeing application designed to help you break free from short-form video addiction. Track your daily scroll counts, battle friends to stay accountable, and hard-lock your feeds when you hit your limit.
 
@@ -7,17 +7,17 @@ Unspool is an open-source, cross-platform digital wellbeing application designed
 
 ---
 
-## ðŸ“¥ Download Unspool
+## 📥 Download Unspool
 
 *(Note: Official binaries will be available here soon via GitHub Releases.)*
 
-- ðŸ“± **[Download for Android (.apk)](https://github.com/iammsp-star/Unspool/releases)** *(Coming Soon)*
-- ðŸ’» **[Download for Windows (.exe)](https://github.com/iammsp-star/Unspool/releases)** *(Coming Soon)*
-- ðŸ **[Download for macOS (.dmg)](https://github.com/iammsp-star/Unspool/releases)** *(Coming Soon)*
+- 📱 **[Download for Android (.apk)](https://github.com/iammsp-star/Unspool/releases)** *(Coming Soon)*
+- 💻 **[Download for Windows (.exe)](https://github.com/iammsp-star/Unspool/releases)** *(Coming Soon)*
+- 🍏 **[Download for macOS (.dmg)](https://github.com/iammsp-star/Unspool/releases)** *(Coming Soon)*
 
 ---
 
-## ðŸš€ Features
+## 🚀 Features
 
 - **Multi-Platform Sync:** Access your stats and manage your limits seamlessly across your Android device and laptop.
 - **Reel Scroll Tracker:** Automatically monitors scroll overhead and platform usage across popular short-form media networks.
@@ -27,19 +27,18 @@ Unspool is an open-source, cross-platform digital wellbeing application designed
 
 ---
 
-## ðŸ› ï¸ Architecture & Tech Stack
+## 🛠️ Architecture & Tech Stack
 
 Unspool is built utilizing a modern, decoupled stack ensuring blazing-fast execution across both mobile and desktop environments:
 
-- **Frontend Framework:** Flutter (Dart) â€” Multi-platform engine.
+- **Frontend Framework:** Flutter (Dart) — Multi-platform engine.
 - **Database & Auth:** Firebase Core (Firestore, Firebase Auth with Google Sign-In).
 - **Background Drivers (Android):** Custom `AccessibilityService` API listener to native hook system touch events and handle application overlays.
 - **Desktop Window Manager:** Desktop-specific native plugins to monitor active application windows and manage focus/lockout routines.
 
 ---
 
-
-## ðŸ¤ Contributing & Open Source
+## 🤝 Contributing & Open Source
 
 Unspool is proudly **open-source** and distributed under the **MIT License**. We welcome developers, UI/UX designers, and anti-scroll advocates to help improve the tool!
 
@@ -51,6 +50,6 @@ Unspool is proudly **open-source** and distributed under the **MIT License**. We
 
 ---
 
-## ðŸ“„ License
+## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
