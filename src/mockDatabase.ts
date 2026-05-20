@@ -161,7 +161,7 @@ export function useDatabase() {
 
   useEffect(() => {
     const unsubscribe = mockDB.subscribe(setDbState);
-    return unsubscribe;
+    return () => { unsubscribe(); };
   }, []);
 
   return dbState;

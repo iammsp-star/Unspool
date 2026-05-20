@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { 
   Activity, Trophy, Settings, Lock, Smartphone, Database, 
-  Play, MousePointer2, LogOut, CheckCircle2, ChevronRight, X, ShieldAlert 
+  Play, MousePointer2, LogOut, CheckCircle2, ShieldAlert 
 } from 'lucide-react';
-import { mockDB, useDatabase, DailyStats } from './mockDatabase';
+import { mockDB, useDatabase } from './mockDatabase';
 import { 
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer 
+  AreaChart, Area, XAxis, CartesianGrid, Tooltip, ResponsiveContainer 
 } from 'recharts';
 import confetti from 'canvas-confetti';
 
@@ -247,9 +247,9 @@ export default function App() {
   
   const stats = currentUser?.daily_stats[TODAY];
   const limit = currentUser?.settings.daily_scroll_limit;
-  const isOverLimit = stats && limit && stats.total_scrolls >= limit;
-  const showCooldown = isOverLimit && isPlusUser;
-  const showPaywallPrompt = isOverLimit && !isPlusUser;
+  const isOverLimit = Boolean(stats && limit && stats.total_scrolls >= limit);
+  const showCooldown = Boolean(isOverLimit && isPlusUser);
+  const showPaywallPrompt = Boolean(isOverLimit && !isPlusUser);
 
   // Render navigation bar for Mobile Emulator
   const BottomNav = () => (
